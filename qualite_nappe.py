@@ -17,35 +17,18 @@ with open(file_path, 'r') as file:
 API_URL = 'https://hubeau.eaufrance.fr/api/v1/qualite_nappes/analyses'
 data_all = []
 results = []
+list_param = "1295,1301,1302,1303,1311,1312,1313,1335,1337,1338,1340,1369,1382,1383,1387,1392,1433,1449,1450"
 
 for station in loaded_list:
-    params = {'bss_id': station,'date_debut_prelevement' : "2023-01-01", 'date_fin_prelevement' : "2024-01-01", 'size': 20000 }
+    params = {'bss_id': station, 'code_param' : list_param,'date_debut_prelevement' : "2013-01-01", 'size': 20000}
 
     r = requests.get(API_URL + '?' + urllib.parse.urlencode(params))
-    if r.status_code == 200:
+    if r.status_code in  [200, 206]:
         data_all.extend(r.json().get("data", []))
     else:
-        print(f"Erreur pour la station {station_id}: {response.status_code}")
+        print(f"Erreur pour la station {station}: {r.status_code}")
 
-with open("qualite_nappe.csv", mode="w", newline="", encoding="utf-8") as file:
-    writer = csv.writer(file, delimiter=';')
-    writer.writerow(["bss_id", "date_debut_prelevement", "longitude", "latitude", "altitude","nom_bassin_dce","code_bassin_dce", "nom_commune_actuel", "code_insee_actuel","nom_departement", "num_departement", "code_param","nom_param", "resultat","code_unite", "nom_unite"])
-    for item in data_all:
-        writer.writerow([
-            item.get("bss_id"),
-            item.get("date_debut_prelevement"),
-            item.get("longitude"),
-            item.get("latitude"),
-            item.get("altitude"),
-            item.get("nom_bassin_dce"),
-            item.get("code_bassin_dce"),
-            item.get("nom_commune_actuel"),
-            item.get("code_insee_actuel"),
-            item.get("nom_departement"),
-            item.get("num_departement"),
-            item.get("code_param"),
-            item.get("nom_param"),
-            item.get("resultat"),
-            item.get("code_unite"),
-            item.get("nom_unite"),
-        ])
+file_path = 'data_qualite.json'
+
+with open(file_path, 'w') as file:
+    json.dump(data_all, file)
