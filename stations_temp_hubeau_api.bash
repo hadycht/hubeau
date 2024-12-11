@@ -1,1 +1,0 @@
-curl -X GET -o ./data_API/stations_temp.csv "https://hubeau.eaufrance.fr/api/v1/temperature/station.csv"
