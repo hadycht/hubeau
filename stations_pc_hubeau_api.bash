@@ -1,0 +1,1 @@
+curl -X GET -o ./data_API/stations_pc_idf.csv "https://hubeau.eaufrance.fr/api/v2/qualite_rivieres/station_pc.csv?code_region=11"
