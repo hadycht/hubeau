@@ -8,15 +8,19 @@ relevant_columns = ['CdCommune', 'LbCommune', 'CdRegion', 'LbRegion',
 
 df_communes_cleaned = df_communes[relevant_columns]
 
-df_communes_cleaned.to_csv('data_cleaned/communes_FR.csv', sep=',', encoding='UTF8', index=None)
+df_communes_idf = df_communes_cleaned[df_communes_cleaned['CdRegion'] == 11].copy()
 
-# unique_bass = df_communes_cleaned['NomBassinDCE'].unique() 
-# unique_bass_1 = df_communes_cleaned['CdBassinDCE'].unique() 
-# unique_reg = df_communes_cleaned['LbRegion'].unique()
+df_communes_idf.drop(['CdRegion', 'LbRegion'], axis=1, inplace=True)
 
-# print("Unique regions are ", unique_reg,' and their number is ', len(unique_reg))
-# print("Unique bassins are ", unique_bass,' and their number is ', len(unique_bass_1))
-# print(df_communes_cleaned.shape)
-# print(df_communes_cleaned.head(5))
-# print(df_communes.head(5))
-# print(df_communes.shape)
+renaming_relevant_columns = {
+    'CdCommune' : 'code_commune', 
+    'LbCommune' : 'libelle_commune', 
+    'CdDepartement' : 'code_departement', 
+    'LbDepartement' : 'libelle_departement', 
+    'CdBassinDCE' : 'code_bassin_DCE', 
+    'NomBassinDCE' : 'libelle_bassin_DCE'
+}
+
+df_communes_idf.rename(columns=renaming_relevant_columns, inplace=True)
+df_communes_idf.to_csv('data_cleaned/communes_IDF.csv', sep=',', encoding='UTF8', index=None)
+
