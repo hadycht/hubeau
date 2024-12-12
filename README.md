@@ -33,3 +33,7 @@ This API provides data on the results of physico-chemical water quality measurem
 Thus, to retrieve the stations where the measurements were made, we use the *python script* **stations_qualite_nappes.py**.
 
 To retrieve the different measurements, we use the *python script* **qualite_nappe_api.py**. We afterwards cleaned this resulting dataset using the *python script* **stations_qualite_nappes.py**. 
+
+## API HubEau: Ecoulement des cours d'eau 
+
+This API provied data on the 
