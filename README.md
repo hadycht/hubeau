@@ -52,6 +52,9 @@ To retrieve different measurements, we use the *python script* **analyses_eau_po
 
 We contructed afterwards a relational database with all these datasets. We used **PostgreSQL**, and by running the sql file **sql_tables.sql**, you should have the resutlting database. (*once you're in postgres, you can run the command **\i /path_to_sql_tables.sql***)   
 
+![alt text](./Relational_database_schema.png.png)
+
+
 ## Our final Datasets 
 
 They can be found on the zip file **datasets.zip**. 
