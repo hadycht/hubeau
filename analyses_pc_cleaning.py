@@ -4,6 +4,9 @@ df_analyses = pd.read_csv('./data_API/analyses_pc.csv', sep=';')
 print("initial shape ", df_analyses.shape)
 print(df_analyses.info())
 
+df_stations = pd.read_csv('./data_cleaned/stations_pc_idf.csv')
+df_analyses = df_analyses[df_analyses['code_station'].isin(df_stations['code_station'])]
+
 #drop rows with nan values in resultat (they represent 1% of the dataset)
 
 df_analyses = df_analyses.dropna(subset=['resultat'])
