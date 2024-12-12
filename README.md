@@ -17,3 +17,19 @@ This API provides data on the results of physico-chemical water quality measurem
 Thus, to retrieve the stations where the measurements were made, we use the *bach script* **stations_pc_hubeau_api.bash**. We afterwards clean the API dataset using the *python script* **stations_pc_cleaning.py**. 
 
 To retrieve the different measurements, we use the *python script* **analyses_pc_api.py** (it was simpler to deal with pagination with python than bash). We afterwards cleaned this resulting dataset using the *python script* **analyses_pc_cleaning.py**. 
+
+## API HubEau: Piezométrie
+
+This API provides data on the depth and water level of underground aquifers. For more information, you can consult the [API Piezometrie documentation](https://hubeau.eaufrance.fr/page/api-piezometrie). 
+
+Thus, to retrieve the stations where the measurements were made, we use the *python script* **stations_piezo.py**. 
+
+To retrieve the different measurements, we use the *python script* **piezometrie_api.py**  We afterwards cleaned this resulting dataset using the *python script* **piezometrie_cleaning.py**. 
+
+## API HubEau: Qualité des nappes d'eau souterraine
+
+This API provides data on the results of physico-chemical water quality measurements for underground aquifers. For more information, you can consult the [API Quality of underground aquifers documentation](https://hubeau.eaufrance.fr/page/api-qualite-nappes).
+
+Thus, to retrieve the stations where the measurements were made, we use the *python script* **stations_qualite_nappes.py**.
+
+To retrieve the different measurements, we use the *python script* **qualite_nappe_api.py**. We afterwards cleaned this resulting dataset using the *python script* **stations_qualite_nappes.py**. 
