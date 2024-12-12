@@ -88,15 +88,30 @@ CREATE TABLE stations_ecoul_idf (
 COPY stations_ecoul_idf FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/stations_ecoul_idf.csv' CSV header; 
 
 CREATE TABLE observations_ec (
+    date_observation DATE,
     code_station VARCHAR REFERENCES stations_ecoul_idf,
-    code_commune VARCHAR,
-    date_observartion DATE,
     code_ecoulement VARCHAR,
     libelle_ecoulement VARCHAR,
-    PRIMARY KEY(code_station, date_observartion)
+    PRIMARY KEY(code_station, date_observation)
 );
 
-COPY observations_ec FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/analyses_ec.csv' DELIMITER ';' CSV header; 
+COPY observations_ec FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/analyses_ec.csv' CSV header; 
+
+CREATE TABLE analyses_eau_potable (
+    date_prelevement DATE,
+    code_commune VARCHAR,
+    code_parametre VARCHAR,
+    libelle_parametre VARCHAR,
+    resultat_numerique DECIMAL(10, 2),
+    libelle_unit VARCHAR,
+    nom_commune VARCHAR,
+    PRIMARY KEY (date_prelevement, code_commune, code_parametre)
+
+); 
+
+COPY analyses_eau_potable FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/analyses_eau_potable.csv' CSV header; 
+
+
 
 
 
