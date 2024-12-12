@@ -36,4 +36,19 @@ To retrieve the different measurements, we use the *python script* **qualite_nap
 
 ## API HubEau: Ecoulement des cours d'eau 
 
-This API provied data on the 
+This API provides data on the flow of small and medium-sized watercourses in mainland France . For more information, you can consult the [API Ecoulement des cours d'eau documentation](https://hubeau.eaufrance.fr/page/api-ecoulement). 
+
+Thus, to retrieve the stations where the measurements were made, we use the *bash script* **stations_ecoul_idf.bash** and the we clean it using the *python script* **stations_ecoul_idf.py**.
+
+To retrieve the different observations, we use the *python script* **observations_ecoul.py**. 
+
+## API HubEau: Qualité de l'eau potable
+
+This API provides results of sanitary inspections of water quality distributed by municipality in France. For more information, you can consult the [API Qualité de l'eau potable documentation](https://hubeau.eaufrance.fr/page/api-qualite-eau-potable). 
+
+To retrieve different measurements, we use the *python script* **analyses_eau_potable_api.py** and then we afterwards we clean the retrieved dataset using **analyses_eau_potable_cleaning.py**. 
+
+## PostgreSQL Relational Database 
+
+We contructed afterwards a relational database with all these datasets. We used **PostgreSQL**, and by running the sql file **sql_tables.sql**, you should have the resutlting database. (*once you're in postgres, you can run the command **\i /path_to_sql_tables.sql***)   
+
