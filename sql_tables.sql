@@ -60,7 +60,7 @@ CREATE TABLE stations_qualite_nappes (
     code_commune_insee VARCHAR REFERENCES communes_idf
 );
 
-COPY stations_qualite_nappes FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/stations_qualite_nappes.csv' DELIMITER ';' CSV header; 
+COPY stations_qualite_nappes FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/stations_qualite_nappes.csv' CSV header; 
 
 CREATE TABLE analyses_qualite_nappes (
     bss_id VARCHAR REFERENCES stations_qualite_nappes,
@@ -99,7 +99,7 @@ COPY observations_ec FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/dataset
 
 CREATE TABLE analyses_eau_potable (
     date_prelevement DATE,
-    code_commune VARCHAR,
+    code_commune VARCHAR REFERENCES communes_idf,
     code_parametre VARCHAR,
     libelle_parametre VARCHAR,
     resultat_numerique DECIMAL(10, 2),
@@ -110,10 +110,3 @@ CREATE TABLE analyses_eau_potable (
 ); 
 
 COPY analyses_eau_potable FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/analyses_eau_potable.csv' CSV header; 
-
-
-
-
-
-
-

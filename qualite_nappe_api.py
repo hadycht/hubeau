@@ -35,9 +35,11 @@ for i,station in enumerate(loaded_list):
         print(f"Erreur pour la station {station}: {r.status_code}")
 
 file_path = "./data_cleaned/stations_qualite_nappes.csv"
-df = pd.read_csv(file_path)
+df = pd.read_csv(file_path, sep=';')
+df_communes = pd.read_csv('./data_cleaned/communes_IDF.csv')
 
 filtered_df = df.iloc[non_empty_station]
+filtered_df = filtered_df[filtered_df['code_commune_insee'].isin(df_communes['code_commune'])]
 
 filtered_df.to_csv("./data_cleaned/stations_qualite_nappes.csv", index=False)
 

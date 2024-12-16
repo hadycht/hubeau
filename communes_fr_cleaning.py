@@ -1,6 +1,6 @@
 import pandas as pd 
 
-df_communes = pd.read_csv('data_API/communes_FR.csv', sep=';')
+df_communes = pd.read_csv('data_API/communes_fr.csv', sep=';')
 
 # print(df_communes.columns)
 relevant_columns = ['CdCommune', 'LbCommune', 'CdRegion', 'LbRegion',

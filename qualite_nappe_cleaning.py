@@ -40,6 +40,8 @@ resultats = data.groupby(['bss_id', 'date_debut_prelevement','code_param']).agg(
     nom_unite = ("nom_unite", "first"),
 ).reset_index()
 
+df_stations = pd.read_csv("./data_cleaned/stations_qualite_nappes.csv") 
+resultats = resultats[resultats['bss_id'].isin(df_stations['bss_id'])]
 
 #resultats = pd.merge(resultats, resultats, on=['bss_id','date_debut_prelevement'])
 resultats.to_csv("./data_cleaned/resultat_qualite.csv",sep=';', index=False)

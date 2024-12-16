@@ -34,5 +34,4 @@ df_cleaned_twice.drop('code_departement', axis=1, inplace=True)
 
 df_cleaned_twice.reset_index(drop=True, inplace=True)
 
-print(len(df_cleaned_twice['code_commune'].unique()))
 df_cleaned_twice.to_csv('data_cleaned/stations_pc_idf.csv', sep=',', index=False)

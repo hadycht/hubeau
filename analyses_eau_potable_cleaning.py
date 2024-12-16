@@ -2,16 +2,19 @@ import pandas as pd
 
 df = pd.read_csv("./data_API/analyses_eau_pot.csv", delimiter=';') 
 
+df_stations = pd.read_csv('./data_cleaned/communes_IDF.csv')
+df = df[df['code_commune'].isin(df_stations['code_commune'])]
+
 df = df.dropna(subset=['resultat_numerique'])
 df['resultat_numerique'] = df['resultat_numerique'].round(2)
 
 df['date_prelevement'] = df['date_prelevement'].apply(lambda x : x.split('T')[0])
 
-print(df.head(5))
-print(df.shape)
-print(df.info())
+# print(df.head(5))
+# print(df.shape)
+# print(df.info())
 
-# faire une sorte d'avoir une seule mesure par data pour chaque station
+# faire une sorte d'avoir une seule mesure par data pour chaque communes
 result = df.groupby(['date_prelevement','code_commune', 'code_parametre'], as_index=False).agg({
     'libelle_parametre': 'first',
     'resultat_numerique': 'mean', 
@@ -19,5 +22,5 @@ result = df.groupby(['date_prelevement','code_commune', 'code_parametre'], as_in
     'nom_commune' : 'first'
 })
 
-print("after cleaning shape ", result.shape)
+# print("after cleaning shape ", result.shape)
 result.to_csv('data_cleaned/analyses_eau_potable.csv', sep=',', index=False)

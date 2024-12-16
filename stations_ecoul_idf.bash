@@ -1,1 +1,1 @@
-curl -X GET -o ./data_API/stations_ecoul_idf.csv "https://hubeau.eaufrance.fr/api/v1/ecoulement/stations.csv?code_region=11" 
+curl -s -X GET -o ./data_API/stations_ecoul_idf.csv "https://hubeau.eaufrance.fr/api/v1/ecoulement/stations.csv?code_region=11" 

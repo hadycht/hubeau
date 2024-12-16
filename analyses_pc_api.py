@@ -46,7 +46,7 @@ def fetch_all_data(url, output_file):
         # Ajouter un jour
         next_date = last_date + pd.Timedelta(days=1)
 
-        print(last_date)
+        # print(last_date)
         params = {
             "size" : size,
             "date_debut_prelevement" : next_date,

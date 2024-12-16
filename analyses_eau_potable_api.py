@@ -8,7 +8,7 @@ def fetch_all_data(url, output_file, params, date_key_api_min, date_key_api_max,
 
     # Make the initial request
     response = requests.get(url, params)
-    print("Response obtained.")
+    # print("Response obtained.")
     if response.status_code not in [200, 206]:
         done = False
         print(f"Error: {response.status_code} - {response.text}")
@@ -23,7 +23,7 @@ def fetch_all_data(url, output_file, params, date_key_api_min, date_key_api_max,
 
     df.to_csv(output_file, index=False, sep=";")
 
-    print("before while")
+    # print("before while")
     while True:
         stop = len(df)
         if stop == 0 or stop < size:
@@ -32,7 +32,7 @@ def fetch_all_data(url, output_file, params, date_key_api_min, date_key_api_max,
 
         last_date = df[date_key].iloc[-1]
         last_date = pd.to_datetime(last_date)
-        print(last_date)
+        # print(last_date)
 
         if not desc:
             next_min_date = last_date + pd.Timedelta(days=1)
