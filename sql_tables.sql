@@ -10,7 +10,7 @@ CREATE TABLE communes_idf (
     libelle_bassin_DCE VARCHAR
 );
 
-COPY communes_idf FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/communes_IDF.csv' CSV header;
+COPY communes_idf FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/data_cleaned/communes_IDF.csv' CSV header;
 
 CREATE TABLE stations_pc_idf (
     code_station VARCHAR PRIMARY KEY,
@@ -23,7 +23,7 @@ CREATE TABLE stations_pc_idf (
     date_maj_information DATE
 );
 
-COPY stations_pc_idf FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/stations_pc_idf.csv' CSV header;
+COPY stations_pc_idf FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/data_cleaned/stations_pc_idf.csv' CSV header;
 
 CREATE TABLE analyses_pc_idf (
     date_prelevement DATE,
@@ -36,14 +36,14 @@ CREATE TABLE analyses_pc_idf (
     PRIMARY KEY (date_prelevement, code_station, code_parametre)
 ); 
 
-COPY analyses_pc_idf FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/analyses_pc.csv' CSV header; 
+COPY analyses_pc_idf FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/data_cleaned/analyses_pc.csv' CSV header; 
 
 CREATE TABLE stations_piezo (
     code_bss VARCHAR PRIMARY KEY,
     code_commune_insee VARCHAR REFERENCES communes_idf
 );
 
-COPY stations_piezo FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/stations_piezo.csv' DELIMITER ';' CSV header; 
+COPY stations_piezo FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/data_cleaned/stations_piezo.csv' DELIMITER ';' CSV header; 
 
 CREATE TABLE piezometrie (
     code_bss VARCHAR REFERENCES stations_piezo,
@@ -53,14 +53,14 @@ CREATE TABLE piezometrie (
     PRIMARY KEY (code_bss, date_mesure)
 ); 
 
-COPY piezometrie FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/piezometrie.csv' DELIMITER ';' CSV header; 
+COPY piezometrie FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/data_cleaned/piezometrie.csv' DELIMITER ';' CSV header; 
 
 CREATE TABLE stations_qualite_nappes (
     bss_id VARCHAR PRIMARY KEY,
     code_commune_insee VARCHAR REFERENCES communes_idf
 );
 
-COPY stations_qualite_nappes FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/stations_qualite_nappes.csv' CSV header; 
+COPY stations_qualite_nappes FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/data_cleaned/stations_qualite_nappes.csv' CSV header; 
 
 CREATE TABLE analyses_qualite_nappes (
     bss_id VARCHAR REFERENCES stations_qualite_nappes,
@@ -73,7 +73,7 @@ CREATE TABLE analyses_qualite_nappes (
     PRIMARY KEY (bss_id, date_debut_prelevement, code_param)
 );
 
-COPY analyses_qualite_nappes FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/resultat_qualite.csv' DELIMITER ';' CSV header; 
+COPY analyses_qualite_nappes FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/data_cleaned/resultat_qualite.csv' DELIMITER ';' CSV header; 
 
 CREATE TABLE stations_ecoul_idf (
     code_station VARCHAR PRIMARY KEY,
@@ -85,7 +85,7 @@ CREATE TABLE stations_ecoul_idf (
     date_maj_station DATE
 ); 
 
-COPY stations_ecoul_idf FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/stations_ecoul_idf.csv' CSV header; 
+COPY stations_ecoul_idf FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/data_cleaned/stations_ecoul_idf.csv' CSV header; 
 
 CREATE TABLE observations_ec (
     date_observation DATE,
@@ -95,7 +95,7 @@ CREATE TABLE observations_ec (
     PRIMARY KEY(code_station, date_observation)
 );
 
-COPY observations_ec FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/analyses_ec.csv' CSV header; 
+COPY observations_ec FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/data_cleaned/analyses_ec.csv' CSV header; 
 
 CREATE TABLE analyses_eau_potable (
     date_prelevement DATE,
@@ -109,4 +109,4 @@ CREATE TABLE analyses_eau_potable (
 
 ); 
 
-COPY analyses_eau_potable FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/datasets/analyses_eau_potable.csv' CSV header; 
+COPY analyses_eau_potable FROM '/home/hady/Bureau/M2/Data_Aqcuisition/Project/data_cleaned/analyses_eau_potable.csv' CSV header; 

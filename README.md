@@ -1,6 +1,8 @@
-# AquaInsight: Sandre & HubEau APIs 
+# Data Acquisition Project: AquaInsight with Sandre & HubEau APIs 
 
-In this project, we focused on assessing the water quality of rivers and water bodies in Île de France. We gathered different measurements since the 1st January 2014 until the last date the APIs provided. 
+In this project, we focused on assessing the water quality of rivers and water bodies in Île de France. We gathered different measurements since the 1st January 2014 until the last date the APIs provided.
+
+In order to reproduce our results, you need to run the *bash script* **running_script.bash**. The csv cleaned files will be in the folder *data_cleaned*. To get the relational database in PostgreSQL, one needs to use the *sql file* **sql_tables.sql**.   
 
 ## API Sandre Communes de France 
 
