@@ -59,5 +59,5 @@ We contructed afterwards a relational database with all these datasets. We used 
 
 ## Our final Datasets 
 
-They can be found on the zip file **datasets.zip**. 
+They can be found on the zip file **data_cleaned.zip**. 
 
